@@ -3,26 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:35 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/05 17:06:57 by chaidel          ###   ########.fr       */
+/*   Updated: 2023/01/09 19:15:36 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <limits>
 
 class Convert {
 	public:
 			/*	Constructors/Destructor */
-		Convert();
+		Convert(std::string &str);
 		Convert(Convert const& cpy);
 		virtual ~Convert();
 
 			/*	Methods */
-
+		int			toInt();
+		char		toChar();
+		float		toFloat();
+		double		toDouble();
+		
 			/*	Assignement Operator Overload */
 		Convert&	operator=(Convert const& obj);
 
@@ -33,11 +38,11 @@ class Convert {
 		double	getDouble() const;
 
 	private:
-		std::string	const&	_av;
-		int	const			_int;
-		char const			_char;
-		float const			_float;
-		double const		_double;
+		std::string const&		_av;
+		int	const				_int;
+		char const				_char;
+		float const				_float;
+		double const			_double;
 	
 	public:
 		class Impossible : public std::exception {
@@ -49,3 +54,5 @@ class Convert {
 		};
 		
 };
+
+std::ostream&	operator<<(std::ostream& flux, Convert const& nums);
