@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:35 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/09 19:15:36 by root             ###   ########.fr       */
+/*   Updated: 2023/01/09 19:42:57 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ class Convert {
 				Impossible() throw();
 				virtual ~Impossible() throw();
 				virtual const char* what() const throw()
-				{return ("Impossible\n");}
+				{	return ("Impossible\n"); }
 		};
 		
 };
