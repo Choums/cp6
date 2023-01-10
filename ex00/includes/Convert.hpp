@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:35 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/09 19:42:57 by root             ###   ########.fr       */
+/*   Updated: 2023/01/10 20:31:14 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <limits>
+#include <cmath>
 
 class Convert {
 	public:
