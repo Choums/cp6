@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:35 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/10 20:31:14 by root             ###   ########.fr       */
+/*   Updated: 2023/01/12 18:16:09 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <iostream>
 #include <limits>
 #include <cmath>
+#include <string>
+#include <cctype>
 
 class Convert {
 	public:
@@ -37,13 +39,14 @@ class Convert {
 		char	getChar() const;
 		float	getFloat() const;
 		double	getDouble() const;
+		std::string	getStr() const;
 
 	private:
-		std::string const&		_av;
-		int	const				_int;
-		char const				_char;
-		float const				_float;
-		double const			_double;
+		std::string&	_av;
+		double 			_double;
+		int				_int;
+		char 			_char;
+		float 			_float;
 	
 	public:
 		class Impossible : public std::exception {

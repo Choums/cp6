@@ -6,11 +6,11 @@
 /*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:11:33 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/05 17:07:46 by chaidel          ###   ########.fr       */
+/*   Updated: 2023/01/12 16:43:06 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "../includes/Convert.hpp"
 
 /*	Exemple:
  *	./convert 0
@@ -33,7 +33,9 @@ int	main(int ac, char **av)
 		std::cerr << "Invalid Argument" << std::endl;
 		exit(1);
 	}
-	std::cout << "char: " << std::endl;
-	// std::cout << "int:" << static_cast<int>(av[1]);
+	
+	std::string	str(av[1]);
+	Convert	num(str);
+	std::cout << num;
 	return (0);
 }
