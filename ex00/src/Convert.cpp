@@ -6,7 +6,7 @@
 /*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:10 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/12 19:06:49 by chaidel          ###   ########.fr       */
+/*   Updated: 2023/01/12 19:23:51 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ std::ostream&	operator<<(std::ostream& flux, Convert const& nums)
 {
 	flux << "char: ";
 	try {
-		else if (nums.getChar() == std::numeric_limits<int>::infinity() || nums.getChar() == -(std::numeric_limits<int>::infinity()) || std::isnan(nums.getChar()))
+		if (nums.getStr().size() > 1 && !std::isdigit(nums.getStr()[0]))
 			throw std::string("Impossible");
-		else if (/*!isprint(nums.getChar())*/ nums.getChar() < 32 || nums.getChar() > 126)
+		else if (!isprint(nums.getChar()))
 			throw std::string("Non Displayable");
 		flux << nums.getChar() << std::endl;
 	}
