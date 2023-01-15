@@ -6,7 +6,7 @@
 /*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:10 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/12 19:23:51 by chaidel          ###   ########.fr       */
+/*   Updated: 2023/01/15 17:42:52 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,6 @@ std::string	Convert::getStr() const
 	return (this->_av);
 }
 
-
-Convert::Impossible::Impossible() throw() {}
-Convert::Impossible::~Impossible() throw() {}
-
-/*
- *	Condition a ajouter:
- *	Char	=> Non printable, Non Displayable
- *	float et double => affichage des . et/ou du 'f'
- *	Message de limite
-*/
 std::ostream&	operator<<(std::ostream& flux, Convert const& nums)
 {
 	flux << "char: ";
@@ -112,7 +102,9 @@ std::ostream&	operator<<(std::ostream& flux, Convert const& nums)
 	}
 	flux << "int: ";
 	try {
-		if (nums.getInt() == std::numeric_limits<int>::infinity() || nums.getInt() == -(std::numeric_limits<int>::infinity()) || std::isnan(nums.getInt()))
+		std::cout << "f: " << nums.getFloat() << "\t| " << static_cast<float>(std::numeric_limits<int>::max()) << std::endl;
+		if (nums.getInt() == std::numeric_limits<int>::infinity() || nums.getInt() == -(std::numeric_limits<int>::infinity())
+			|| std::isnan(nums.getInt()) || nums.getFloat() > (std::numeric_limits<int>::max() || nums.getFloat() < std::numeric_limits<int>::min()))
 			throw std::string("Impossible");
 		flux << nums.getInt() << std::endl;
 		
@@ -120,7 +112,25 @@ std::ostream&	operator<<(std::ostream& flux, Convert const& nums)
 	catch (std::string& e) {
 		flux << e << std::endl;
 	}
-	flux << "float: " << nums.getFloat() << std::endl;
-	flux << "double: " << nums.getDouble() << std::endl;		
+	double	fract(0);
+	double	int_part(0);
+	flux << "float: ";
+	fract = modf(nums.getFloat(), &int_part);
+	if (fract == 0)
+	{
+		flux.precision(1);
+		flux << std::fixed << nums.getFloat() << 'f' << std::endl;
+	}
+	else
+		flux << nums.getFloat() << 'f' << std::endl;
+	flux << "double: ";
+	fract = modf(nums.getDouble(), &int_part);
+	if (fract == 0)
+	{
+		flux.precision(1);
+		flux << std::fixed << nums.getDouble() << std::endl;
+	}
+	else
+		flux << nums.getDouble() << std::endl;	
 	return (flux);
 }

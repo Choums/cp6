@@ -6,7 +6,7 @@
 /*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:35 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/12 18:16:09 by chaidel          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:34:53 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <cmath>
 #include <string>
 #include <cctype>
+#include <iomanip>
 
 class Convert {
 	public:
@@ -47,16 +48,6 @@ class Convert {
 		int				_int;
 		char 			_char;
 		float 			_float;
-	
-	public:
-		class Impossible : public std::exception {
-			public:
-				Impossible() throw();
-				virtual ~Impossible() throw();
-				virtual const char* what() const throw()
-				{	return ("Impossible\n"); }
-		};
-		
 };
 
 std::ostream&	operator<<(std::ostream& flux, Convert const& nums);
