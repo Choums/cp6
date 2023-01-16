@@ -6,7 +6,7 @@
 /*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:35 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/13 18:34:53 by chaidel          ###   ########.fr       */
+/*   Updated: 2023/01/16 16:06:25 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 #include <string>
 #include <cctype>
 #include <iomanip>
+
+#define MAX 2147483648
+#define MIN -2147483648
 
 class Convert {
 	public:

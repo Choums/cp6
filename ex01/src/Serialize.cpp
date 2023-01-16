@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serialize.hpp                                      :+:      :+:    :+:   */
+/*   Serialize.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 17:51:34 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/16 14:26:46 by chaidel          ###   ########.fr       */
+/*   Created: 2023/01/16 14:21:08 by chaidel           #+#    #+#             */
+/*   Updated: 2023/01/16 16:12:23 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "../includes/Serialize.hpp"
 
-#include<iostream>
-#include<stdint.h>
+/*	uintptr_t remplace le void*, il est plus large */
 
-typedef	struct	Data {
-	std::string	name;
-	int	value;
-} Data;
+uintptr_t	serialize(Data* ptr)
+{
+	uintptr_t var = reinterpret_cast<uintptr_t>(ptr);
+	return (var);
+}
 
-uintptr_t	serialize(Data *ptr);
-Data*		deserialize(uintptr_t raw);
+Data*	deserialize(uintptr_t raw)
+{
+	Data	*data;
+	data = reinterpret_cast<Data*>(raw);
+	return (data);
+}
