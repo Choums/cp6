@@ -1,23 +1,22 @@
-NAME    = Serializer
-OS		= $(shell uname)
+NAME		= Identify
 
 # directories
-SRCDIR        =    ./src
-INCDIR        =    ./includes
-OBJDIR        =    ./obj
+SRCDIR		=    ./src
+INCDIR		=    ./includes
+OBJDIR		=    ./obj
 
-HEADER		=	Serialize.hpp
+HEADER		=	Base.hpp
 
 # src / obj files
-SRC        =	main.cpp\
-				Serialize.cpp
+SRC			=	main.cpp\
+				Base.cpp
 				
 
-OBJ        = $(addprefix $(OBJDIR)/,$(SRC:.cpp=.o))
+OBJ			=	$(addprefix $(OBJDIR)/,$(SRC:.cpp=.o))
 OBJINC		=	$(addprefix $(INCDIR)/,$(HEADER))
 # compiler
-CC        = c++
-CFLAGS    = -Wall -Wextra -Werror -std=c++98 -Wconversion -g3 -fsanitize=address
+CC			= c++
+CFLAGS		= -Wall -Wextra -Werror -std=c++98 -Wconversion -g3 -fsanitize=address
 
 
 all:	obj $(NAME)
