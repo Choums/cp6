@@ -6,7 +6,7 @@
 /*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:10 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/16 16:07:10 by chaidel          ###   ########.fr       */
+/*   Updated: 2023/01/17 18:46:00 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,10 @@ std::ostream&	operator<<(std::ostream& flux, Convert const& nums)
 	}
 	flux << "int: ";
 	try {
-		// std::cout << "f: " << nums.getFloat() << "\t| " << MAX << std::endl << std::endl;
 		if (nums.getInt() == std::numeric_limits<int>::infinity() || nums.getInt() == -(std::numeric_limits<int>::infinity())
-			|| std::isnan(nums.getInt()) || nums.getFloat() > MAX || nums.getFloat() < MIN)
+			|| std::isnan(nums.getInt())
+			|| nums.getDouble() > static_cast<double>(std::numeric_limits<int>::max())
+			|| nums.getDouble() < static_cast<double>(std::numeric_limits<int>::min()))
 			throw std::string("Impossible");
 		flux << nums.getInt() << std::endl;
 		
