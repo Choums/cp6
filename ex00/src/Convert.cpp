@@ -6,7 +6,7 @@
 /*   By: chaidel <chaidel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:50:10 by chaidel           #+#    #+#             */
-/*   Updated: 2023/01/17 18:46:00 by chaidel          ###   ########.fr       */
+/*   Updated: 2023/01/25 18:38:45 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 		/*	Constructors/Destructor */
 Convert::Convert(std::string& str) : _av(str), _double(toDouble()), _int(toInt()), _char(toChar()), _float(toFloat())
-{}
+{
+	if (!isdigit(str[0]) && str.size() == 1)
+	{
+		this->_int = static_cast<int>(str[0]);
+		this->_double = static_cast<double>(str[0]);
+		this->_float = static_cast<float>(str[0]);
+	}
+}
 
 Convert::Convert(Convert const& cpy) : _av(cpy._av), _double(cpy._double), _int(cpy._int), _char(cpy._char), _float(cpy._float)
 {}
@@ -57,7 +64,13 @@ double	Convert::toDouble()
 Convert&	Convert::operator=(Convert const& obj)
 {	
 	if (this != &obj)
-		return (*this);
+	{
+		this->_av = obj._av;
+		this->_int = obj._int;
+		this->_char = obj._char;
+		this->_float = obj._float;
+		this->_double = obj._double;
+	}
 	return (*this);
 }
 
@@ -102,13 +115,13 @@ std::ostream&	operator<<(std::ostream& flux, Convert const& nums)
 	}
 	flux << "int: ";
 	try {
-		if (nums.getInt() == std::numeric_limits<int>::infinity() || nums.getInt() == -(std::numeric_limits<int>::infinity())
-			|| std::isnan(nums.getInt())
-			|| nums.getDouble() > static_cast<double>(std::numeric_limits<int>::max())
-			|| nums.getDouble() < static_cast<double>(std::numeric_limits<int>::min()))
-			throw std::string("Impossible");
+		if (nums.getStr().compare("0"))
+			if (nums.getInt() == std::numeric_limits<int>::infinity() || nums.getInt() == -(std::numeric_limits<int>::infinity())
+				|| !nums.getStr().compare("nan")
+				|| nums.getDouble() > static_cast<double>(std::numeric_limits<int>::max())
+				|| nums.getDouble() < static_cast<double>(std::numeric_limits<int>::min()))
+				throw std::string("Impossible");
 		flux << nums.getInt() << std::endl;
-		
 	}
 	catch (std::string& e) {
 		flux << e << std::endl;
